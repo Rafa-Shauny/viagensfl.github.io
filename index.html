@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercâmbio Global - Projeto Rússia</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/russia.css">
+</head>
+<body>
+    <header class="russia-header">
+        <h1>Projeto Rússia 2024</h1>
+        <nav>Mais a ser adicionado</nav>
+    </header>
+
+    <main>
+        <section class="projeto-russia">
+            <h2>Viagem Cultural para a Rússia</h2>
+            <div class="preco-box">
+                <h3>Investimento Total: R$ 8.900,00</h3>
+                <p>Inclui: Passagem aérea, hospedagem, seguro saúde, 3 passeios culturais</p>
+                <button class="simulador-btn" onclick="abrirSimulador()">Simular Parcelamento</button>
+            </div>
+
+            <div class="detalhes-viagem">
+                <h3>Roteiro Detalhado:</h3>
+                <ul>
+                    <li>Moscou (7 dias) - Kremlin, Praça Vermelha</li>
+                    <li>São Petersburgo (5 dias) - Museu Hermitage</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="comparador-rapido">
+            <h2>Compare com outros destinos:</h2>
+            <div class="comparador-form">
+                <select id="pais-comparacao">
+                    <option value="">Selecione um país</option>
+                    <option value="eua">Estados Unidos</option>
+                    <option value="canada">Canadá</option>
+                </select>
+                <button onclick="compararPaises()">Comparar</button>
+            </div>
+            <div id="resultado-comparacao"></div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/currency.js"></script>
+</body>
+</html>
