@@ -1,0 +1,13 @@
+<form id="meu-form" action="https://formspree.io/f/xblggpdw" method="POST">
+    <input type="hidden" name="identificador_anonimo" id="anonimo-id">
+    <input type="text" name="nome" placeholder="Nome (opcional)">
+    <input type="email" name="email" placeholder="E-mail">
+    <textarea name="mensagem" placeholder="Sua mensagem"></textarea>
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+    // Gerar ID anônimo aleatório
+    document.getElementById('anonimo-id').value = 
+        'user-' + Math.random().toString(36).substr(2, 9);
+</script>
