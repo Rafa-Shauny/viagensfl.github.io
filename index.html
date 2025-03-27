@@ -9,43 +9,47 @@
 </head>
 <body>
     <header class="russia-header">
-        <h1>Projeto Rússia 2024</h1>
-        <nav>Mais a ser adicionado</nav>
+        <div class="container">
+            <h1>Intercâmbio Global</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="russia.html">Projeto Rússia</a></li>
+                    <li><a href="comparador.html">Comparador</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="projeto-russia">
-            <h2>Viagem Cultural para a Rússia</h2>
+    <main class="container">
+        <section class="destaque">
+            <h2>Projeto Rússia 2024</h2>
             <div class="preco-box">
-                <h3>Investimento Total: R$ 8.900,00</h3>
-                <p>Inclui: Passagem aérea, hospedagem, seguro saúde, 3 passeios culturais</p>
-                <button class="simulador-btn" onclick="abrirSimulador()">Simular Parcelamento</button>
-            </div>
-
-            <div class="detalhes-viagem">
-                <h3>Roteiro Detalhado:</h3>
-                <ul>
-                    <li>Moscou (7 dias) - Kremlin, Praça Vermelha</li>
-                    <li>São Petersburgo (5 dias) - Museu Hermitage</li>
-                </ul>
+                <h3>Investimento Total: <span id="preco-russia">R$ 8.900,00</span></h3>
+                <div class="conversor-rapido">
+                    <select id="moeda-conversao">
+                        <option value="BRL">Real (R$)</option>
+                        <option value="USD">Dólar ($)</option>
+                        <option value="EUR">Euro (€)</option>
+                        <option value="RUB">Rublo Russo (₽)</option>
+                    </select>
+                    <button onclick="converterPrecoPrincipal()">Converter</button>
+                </div>
             </div>
         </section>
 
-        <section class="comparador-rapido">
-            <h2>Compare com outros destinos:</h2>
-            <div class="comparador-form">
-                <select id="pais-comparacao">
-                    <option value="">Selecione um país</option>
-                    <option value="eua">Estados Unidos</option>
-                    <option value="canada">Canadá</option>
-                </select>
-                <button onclick="compararPaises()">Comparar</button>
+        <section class="comparador-destinos">
+            <h2>Compare Destinos</h2>
+            <div class="cards-destinos">
+                <!-- Cards serão gerados por JavaScript -->
             </div>
-            <div id="resultado-comparacao"></div>
         </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <script src="js/api-config.js"></script>
     <script src="js/currency.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
