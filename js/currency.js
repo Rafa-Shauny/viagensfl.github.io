@@ -1,7 +1,7 @@
 // API de câmbio (exemplo usando ExchangeRate-API)
 async function converterMoeda(de, para, valor) {
     try {
-        const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${de}`);
+        const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${1ef3961459d64ad88ccdd58f154ef959}`);
         const data = await response.json();
         const taxa = data.rates[para];
         return (valor * taxa).toFixed(2);
