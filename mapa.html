@@ -1,0 +1,13 @@
+<div id="mapa-mundo" style="height: 500px;"></div>
+<script>
+    function initMap() {
+        // Usando Leaflet.js ou Google Maps API
+        const map = L.map('mapa-mundo').setView([20, 0], 2);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        
+        // Marcadores dos participantes
+        L.marker([55.7558, 37.6173]).addTo(map)
+            .bindPopup("Rússia - Destino Principal");
+    }
+</script>
