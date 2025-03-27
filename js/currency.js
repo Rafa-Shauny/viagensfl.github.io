@@ -1,35 +1,35 @@
-// API de câmbio (exemplo usando ExchangeRate-API)
-async function converterMoeda(de, para, valor) {
+import { OXR_API_KEY } from './api-config.js';
+
+let ratesCache = null;
+let lastFetch = 0;
+
+async function fetchExchangeRates() {
+    if (ratesCache && Date.now() - lastFetch < 600000) {
+        return ratesCache;
+    }
+
     try {
-        const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${1ef3961459d64ad88ccdd58f154ef959}`);
+        const response = await fetch(
+            `https://openexchangerates.org/api/latest.json?app_id=${OXR_API_KEY}&base=USD`
+        );
         const data = await response.json();
-        const taxa = data.rates[para];
-        return (valor * taxa).toFixed(2);
+        
+        ratesCache = data.rates;
+        lastFetch = Date.now();
+        return ratesCache;
+        
     } catch (error) {
-        console.error("Erro na conversão:", error);
+        console.error("Erro ao buscar cotações:", error);
         return null;
     }
 }
 
-async function compararPaises() {
-    const pais = document.getElementById('pais-comparacao').value;
-    let resultado = document.getElementById('resultado-comparacao');
-    
-    // Valores base da Rússia em BRL
-    const custoRussia = 8900;
-    const custoDiarioRussia = 300;
-    
-    switch(pais) {
-        case 'eua':
-            const custoEUA = await converterMoeda('USD', 'BRL', 4000);
-            const diariaEUA = await converterMoeda('USD', 'BRL', 150);
-            resultado.innerHTML = `
-                <div class="comparacao-box">
-                    <h3>Estados Unidos vs Rússia</h3>
-                    <p><strong>Passagem:</strong> R$ ${custoEUA} vs R$ ${custoRussia}</p>
-                    <p><strong>Custo diário:</strong> R$ ${diariaEUA} vs R$ ${custoDiarioRussia}</p>
-                </div>
-            `;
-            break;
-    }
+async function converterMoeda(valor, deMoeda, paraMoeda) {
+    const rates = await fetchExchangeRates();
+    if (!rates) return null;
+
+    const valorEmUSD = valor / rates[deMoeda];
+    const valorConvertido = valorEmUSD * rates[paraMoeda];
+
+    return valorConvertido.toFixed(2);
 }
