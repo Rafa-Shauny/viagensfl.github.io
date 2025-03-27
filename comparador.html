@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados similares ao index.html -->
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <!-- Cabeçalho igual ao index.html -->
+
+    <main class="container">
+        <h1>Comparador de Destinos</h1>
+        
+        <div class="filtros">
+            <select id="filtro-continente">
+                <option value="">Todos os continentes</option>
+                <option value="Europa">Europa</option>
+                <option value="América">América</option>
+            </select>
+            
+            <div class="faixa-preco">
+                <label>Faixa de preço:</label>
+                <input type="range" id="preco-slider" min="1000" max="20000" step="500">
+                <span id="preco-valor">R$ 10.000</span>
+            </div>
+        </div>
+
+        <div class="resultados-comparacao" id="resultados">
+            <!-- Resultados serão carregados via JS -->
+        </div>
+    </main>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/currency.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await currencyConverter.fetchRates();
+            carregarDestinos();
+            
+            document.getElementById('preco-slider').addEventListener('input', (e) => {
+                document.getElementById('preco-valor').textContent = 
+                    `R$ ${parseInt(e.target.value).toLocaleString()}`;
+                filtrarDestinos();
+            });
+            
+            document.getElementById('filtro-continente').addEventListener('change', filtrarDestinos);
+        });
+
+        const destinos = [
+            {
+                nome: "Rússia",
+                continente: "Europa",
+                precoBRL: 8900,
+                moeda: "RUB",
+                imagem: "img/bandeira-russia.jpg",
+                detalhes: "Inclui passagem, hospedagem e 3 passeios culturais"
+            },
+            // Adicione outros destinos aqui
+        ];
+
+        async function carregarDestinos() {
+            const container = document.getElementById('resultados');
+            container.innerHTML = '';
+            
+            for (const destino of destinos) {
+                const moedaDestino = await currencyConverter.getCountryCurrency(destino.nome);
+                const precoConvertido = await currencyConverter.convert(
+                    destino.precoBRL, 'BRL', moedaDestino
+                );
+                
+                const card = document.createElement('div');
+                card.className = 'destino-card';
+                card.innerHTML = `
+                    <img src="${destino.imagem}" alt="${destino.nome}">
+                    <div class="card-info">
+                        <h3>${destino.nome}</h3>
+                        <p class="preco">${moedaDestino} ${precoConvertido.toFixed(2)}</p>
+                        <p>${destino.detalhes}</p>
+                        <button onclick="detalharDestino('${destino.nome}')">Ver detalhes</button>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            }
+        }
+
+        function filtrarDestinos() {
+        }
+    </script>
+</body>
+</html>
