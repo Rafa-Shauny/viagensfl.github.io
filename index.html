@@ -3,53 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intercâmbio Global - Projeto Rússia</title>
-    <link rel="stylesheet" href="css/estilo.css">
-    <link rel="stylesheet" href="css/russia.css">
+    <title>ShaunyFL - Projeto Rússia</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="icon" type="image/png" href="./public/assets/images/russia-flag.jpg">
 </head>
 <body>
-    <header class="russia-header">
-        <div class="container">
-            <h1>Intercâmbio Global</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="russia.html">Projeto Rússia</a></li>
-                    <li><a href="comparador.html">Comparador</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <header>
+            <img src="./public/assets/images/russia-flag.jpg" alt="Bandeira da Rússia" class="banner">
+            <h1>ShaunyFL - Projeto Cultural sobre a Rússia</h1>
+        </header>
+
+        <section class="content-section">
+            <h2>Cultura Russa</h2>
+            <p>A Rússia é o maior país do mundo, conhecido por...</p>
+        </section>
+
+        <div class="converter-box">
+            <h2>💱 Conversor de Moedas</h2>
+            <div class="converter-inputs">
+                <input type="number" id="amount" placeholder="Valor em BRL" step="0.01">
+                <select id="fromCurrency">
+                    <option value="BRL" selected>BRL</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="RUB">RUB</option>
+                </select>
+                <span>→</span>
+                <select id="toCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="BRL">BRL</option>
+                    <option value="RUB">RUB</option>
+                </select>
+                <button onclick="convertCurrency()">Calcular</button>
+            </div>
+            <div id="result" class="result-box"></div>
         </div>
-    </header>
 
-    <main class="container">
-        <section class="destaque">
-            <h2>Projeto Rússia 2024</h2>
-            <div class="preco-box">
-                <h3>Investimento Total: <span id="preco-russia">R$ 8.900,00</span></h3>
-                <div class="conversor-rapido">
-                    <select id="moeda-conversao">
-                        <option value="BRL">Real (R$)</option>
-                        <option value="USD">Dólar ($)</option>
-                        <option value="EUR">Euro (€)</option>
-                        <option value="RUB">Rublo Russo (₽)</option>
-                    </select>
-                    <button onclick="converterPrecoPrincipal()">Converter</button>
-                </div>
+        <div class="converter-box flight-section">
+            <h2>✈️ Pesquisa de Voos</h2>
+            <div id="flight-widget" class="skyscanner-widget"></div>
+        </div>
+
+        <section class="video-section">
+            <h2>📺 Vídeo Explicativo</h2>
+            <div class="video-container">
+                <!-- Substituir pelo embed do vídeo -->
+                <iframe src="https://www.youtube.com/embed/placeholder" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
             </div>
         </section>
 
-        <section class="comparador-destinos">
-            <h2>Compare Destinos</h2>
-            <div class="cards-destinos">
-                <!-- Cards serão gerados por JavaScript -->
+        <footer>
+            <div class="creator-info">
+                <h3>Sobre o Projeto</h3>
+                <p>Desenvolvido por: Rafaela Ferreira - 1º Ano A</p>
+                <p>Escola: Firmino Ladeira</p>
+                <p>Disciplina: Eletivas de viagens</p>
             </div>
-        </section>
-    </main>
+            <div class="project-info">
+                <p>© 2025 ShaunyFL - Todos os direitos reservados</p>
+                <p>Projeto escolar sem fins comerciais</p>
+            </div>
+        </footer>
+    </div>
 
-    <script src="js/api-config.js"></script>
-    <script src="js/currency.js"></script>
-    <script src="js/main.js"></script>
+    <script src="./public/js/scripts.js"></script>
+    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 </body>
 </html>
