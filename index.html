@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShaunyFL - Projeto Rússia</title>
     <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="icon" type="image/png" href="./public/assets/images/russia-flag.jpg">
+    <link rel="icon" href="./public/assets/images/russia-flag.jpg">
 </head>
 <body>
     <div class="container">
@@ -15,46 +15,47 @@
         </header>
 
         <section class="content-section">
-            <h2>Cultura Russa</h2>
-            <p>A Rússia é o maior país do mundo, conhecido por...</p>
+            <h2>🎌 Cultura Russa</h2>
+            <p>A Rússia, o maior país do mundo, possui uma cultura rica em literatura, música clássica e arquitetura impressionante.</p>
         </section>
 
         <div class="converter-box">
             <h2>💱 Conversor de Moedas</h2>
             <div class="converter-inputs">
-                <input type="number" id="amount" placeholder="Valor em BRL" step="0.01">
+                <input type="number" id="amount" placeholder="Valor em BRL" step="0.01" value="100">
                 <select id="fromCurrency">
                     <option value="BRL" selected>BRL</option>
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
-                    <option value="JPY">JPY</option>
                     <option value="RUB">RUB</option>
                 </select>
                 <span>→</span>
                 <select id="toCurrency">
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
-                    <option value="JPY">JPY</option>
+                    <option value="RUB" selected>RUB</option>
                     <option value="BRL">BRL</option>
-                    <option value="RUB">RUB</option>
                 </select>
                 <button onclick="convertCurrency()">Calcular</button>
             </div>
-            <div id="result" class="result-box"></div>
+            <div id="result" class="result-box">100 BRL = 467.23 RUB</div>
         </div>
 
-        <div class="converter-box flight-section">
+        <div class="flight-section">
             <h2>✈️ Pesquisa de Voos</h2>
-            <div id="flight-widget" class="skyscanner-widget"></div>
+            <div class="flight-widget">
+                <a href="https://www.skyscanner.com.br/transport/flights/br/ru/" target="_blank" class="flight-link">
+                    <img src="https://content.skyscnr.com/m/774223a3f06d1b0d/original/GettyImages-531697289.jpg" alt="Voos para Rússia">
+                    <p>Clique para pesquisar voos para Rússia</p>
+                </a>
+            </div>
         </div>
 
         <section class="video-section">
             <h2>📺 Vídeo Explicativo</h2>
             <div class="video-container">
-                <!-- Substituir pelo embed do vídeo -->
-                <iframe src="https://www.youtube.com/embed/placeholder" 
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                         frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                 </iframe>
             </div>
@@ -64,17 +65,14 @@
             <div class="creator-info">
                 <h3>Sobre o Projeto</h3>
                 <p>Desenvolvido por: Rafaela Ferreira - 1º Ano A</p>
-                <p>Escola: Firmino Ladeira</p>
-                <p>Disciplina: Eletivas de viagens</p>
+                <p>Escola: [Nome da Escola]</p>
             </div>
             <div class="project-info">
-                <p>© 2025 ShaunyFL - Todos os direitos reservados</p>
-                <p>Projeto escolar sem fins comerciais</p>
+                <p>© 2024 ShaunyFL - Projeto Escolar</p>
             </div>
         </footer>
     </div>
 
     <script src="./public/js/scripts.js"></script>
-    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
 </body>
 </html>
